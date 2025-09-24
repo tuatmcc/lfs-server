@@ -1,12 +1,12 @@
-FROM golang:1.14.7
-MAINTAINER GitHub, Inc.
+FROM golang:1.22
+LABEL org.opencontainers.image.authors="GitHub, Inc."
 
 WORKDIR /go/src/github.com/git-lfs/lfs-test-server
 
 COPY . .
 
-RUN go build
+RUN go build -o /usr/local/bin/lfs-test-server .
 
 EXPOSE 8080
 
-CMD /go/src/github.com/git-lfs/lfs-test-server/lfs-test-server
+CMD ["lfs-test-server"]
